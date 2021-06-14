@@ -1,8 +1,8 @@
-// import 'package:bloc/bloc.dart';
-// import 'package:meta/meta.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
-// part 'navigator_state.dart';
-
-// class NavigatorCubit extends Cubit<NavigatorState> {
-//   NavigatorCubit() : super(NavigatorInitial());
-// }
+class NavigatorCubit extends Cubit<int> {
+  NavigatorCubit() : super(0);
+  void changeBottomNavIndex(int index) {
+    emit(index);
+  }
+}
