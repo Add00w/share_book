@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:share_book/src/ui/pages/onboarding_page.dart';
 
 import 'main_page.dart';
 
@@ -16,7 +17,7 @@ class _SplashPageState extends State<SplashPage> {
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(
-          builder: (context) => MainPage(),
+          builder: (context) => OnBoardingPage(),
         ),
       );
     });
@@ -25,32 +26,12 @@ class _SplashPageState extends State<SplashPage> {
 
   @override
   Widget build(BuildContext context) {
-    return ClipPath(
-      clipper: SplashClipper(),
-      child: Container(
-        color: Theme.of(context).primaryColor,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [Image.asset('assets/images/splash/splash.png')],
-        ),
+    return Container(
+      color: Theme.of(context).primaryColor,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [Image.asset('assets/images/splash/splash.png')],
       ),
     );
   }
-}
-
-class SplashClipper extends CustomClipper<Path> {
-  @override
-  getClip(Size size) {
-    final path = Path();
-    path.moveTo(size.width / 9, size.height);
-    path.addPolygon([
-      Offset.fromDirection(50),
-      Offset(size.width / 20, size.height / 5),
-      Offset(0, size.height)
-    ], true);
-    return path;
-  }
-
-  @override
-  bool shouldReclip(covariant CustomClipper oldClipper) => false;
 }
