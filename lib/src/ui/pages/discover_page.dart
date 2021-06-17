@@ -1,8 +1,84 @@
 import 'package:flutter/material.dart';
+import 'package:share_book/src/ui/widgets/clippers.dart';
+import 'package:share_book/src/ui/widgets/share_book_slider.dart';
 
 class DiscoverPage extends StatelessWidget {
   const DiscoverPage({Key? key}) : super(key: key);
-
+  static final _categories = [
+    Column(
+      children: [
+        CircleAvatar(
+          radius: 35,
+          child: Icon(Icons.add),
+          backgroundColor: Colors.black,
+        ),
+        Text('Add'),
+      ],
+    ),
+    Column(
+      children: [
+        CircleAvatar(
+          radius: 35,
+          backgroundImage: AssetImage('assets/images/top/Fatherhood.png'),
+        ),
+        Text('Food'),
+      ],
+    ),
+    Column(
+      children: [
+        CircleAvatar(
+          radius: 35,
+          backgroundImage: AssetImage('assets/images/top/Fatherhood.png'),
+        ),
+        Text('Medical'),
+      ],
+    ),
+    Column(
+      children: [
+        CircleAvatar(
+          radius: 35,
+          backgroundImage: AssetImage('assets/images/top/Fatherhood.png'),
+        ),
+        Text('History'),
+      ],
+    ),
+    Column(
+      children: [
+        CircleAvatar(
+          radius: 35,
+          backgroundImage: AssetImage('assets/images/top/Fatherhood.png'),
+        ),
+        Text('Social'),
+      ],
+    ),
+    Column(
+      children: [
+        CircleAvatar(
+          radius: 35,
+          backgroundImage: AssetImage('assets/images/top/Fatherhood.png'),
+        ),
+        Text('Social'),
+      ],
+    ),
+    Column(
+      children: [
+        CircleAvatar(
+          radius: 35,
+          backgroundImage: AssetImage('assets/images/top/Fatherhood.png'),
+        ),
+        Text('Social'),
+      ],
+    ),
+    Column(
+      children: [
+        CircleAvatar(
+          radius: 35,
+          backgroundImage: AssetImage('assets/images/top/Fatherhood.png'),
+        ),
+        Text('Social'),
+      ],
+    ),
+  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -14,7 +90,7 @@ class DiscoverPage extends StatelessWidget {
                 clipper: DiscoverTopClipper(),
                 child: Container(
                   color: Theme.of(context).primaryColor,
-                  height: MediaQuery.of(context).size.height * 0.5,
+                  height: MediaQuery.of(context).size.height * 0.67,
                   width: double.infinity,
                 ),
               ),
@@ -22,7 +98,7 @@ class DiscoverPage extends StatelessWidget {
                 clipper: DiscoverTopClipper2(),
                 child: Container(
                   color: Theme.of(context).accentColor,
-                  height: MediaQuery.of(context).size.height * 0.5,
+                  height: MediaQuery.of(context).size.height * 0.66,
                   width: double.infinity,
                 ),
               ),
@@ -48,66 +124,40 @@ class DiscoverPage extends StatelessWidget {
                 ),
               ),
               Positioned(
-                child: Text('Our Top Picks'),
+                child: Text(
+                  'Our Top Picks',
+                  style: Theme.of(context).textTheme.headline6,
+                ),
                 top: 150,
-                left: 10,
+                left: 15,
               ),
+              Positioned(
+                width: 400,
+                child: ShareBookSlider(),
+                top: 200,
+              ),
+              Positioned(
+                top: 520,
+                width: MediaQuery.of(context).size.width,
+                height: 100,
+                child: ListView.separated(
+                  scrollDirection: Axis.horizontal,
+                  itemBuilder: (context, index) {
+                    return _categories[index];
+                  },
+                  separatorBuilder: (context, index) {
+                    return SizedBox(
+                      width: 10,
+                    );
+                  },
+                  itemCount: _categories.length,
+                  shrinkWrap: true,
+                ),
+              )
             ],
           ),
         ],
       ),
     );
   }
-}
-
-class DiscoverTopClipper extends CustomClipper<Path> {
-  @override
-  getClip(Size size) {
-    final path = Path();
-    path.lineTo(0, size.height - 100);
-    path.quadraticBezierTo(
-      size.width / 4,
-      size.height / 2,
-      size.width / 2,
-      size.height - 100,
-    );
-    path.quadraticBezierTo(
-      size.width - (size.width / 4),
-      size.height - 50,
-      size.width,
-      size.height - 100,
-    );
-    path.lineTo(size.width, 0);
-    path.close();
-    return path;
-  }
-
-  @override
-  bool shouldReclip(covariant CustomClipper oldClipper) => false;
-}
-
-class DiscoverTopClipper2 extends CustomClipper<Path> {
-  @override
-  getClip(Size size) {
-    final path = Path();
-    path.lineTo(0, size.height - 150);
-    path.quadraticBezierTo(
-      size.width / 3,
-      size.height / 2,
-      size.width / 2,
-      size.height - 100,
-    );
-    path.quadraticBezierTo(
-      size.width - (size.width / 3),
-      size.height,
-      size.width,
-      size.height,
-    );
-    path.lineTo(size.width, 0);
-    path.close();
-    return path;
-  }
-
-  @override
-  bool shouldReclip(covariant CustomClipper oldClipper) => false;
 }
