@@ -118,21 +118,25 @@ class DiscoverPage extends StatelessWidget {
                 Padding(
                   padding:
                       const EdgeInsets.symmetric(horizontal: 15, vertical: 60),
-                  child: TextField(
-                    decoration: InputDecoration(
-                      prefixIcon: Icon(Icons.search, size: 25),
-                      hintText: 'Search Books, Authors',
-                      border: OutlineInputBorder(
-                        borderSide: BorderSide(color: Colors.blue),
+                  child: Material(
+                    elevation: 1,
+                    borderRadius: BorderRadius.circular(30),
+                    child: TextField(
+                      decoration: InputDecoration(
+                        prefixIcon: Icon(Icons.search, size: 25),
+                        hintText: 'Search Books, Authors',
+                        border: OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.transparent),
+                        ),
+                        suffixIcon: Icon(Icons.filter_list_outlined, size: 25),
+                        enabledBorder: OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.transparent),
+                          borderRadius: BorderRadius.circular(30),
+                        ),
+                        isDense: true,
+                        filled: true,
+                        fillColor: Theme.of(context).cardColor,
                       ),
-                      suffixIcon: Icon(Icons.filter_list_outlined, size: 25),
-                      enabledBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: Colors.blue),
-                        borderRadius: BorderRadius.circular(30),
-                      ),
-                      isDense: true,
-                      filled: true,
-                      fillColor: Theme.of(context).cardColor,
                     ),
                   ),
                 ),
