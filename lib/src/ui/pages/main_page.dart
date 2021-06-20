@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:share_book/blocs/navigator/navigator_cubit.dart';
 import 'package:share_book/src/ui/pages/discover_page.dart';
 import 'package:share_book/src/ui/pages/profile_page.dart';
+import 'package:share_book/src/ui/pages/store_page.dart';
 
 class MainPage extends StatelessWidget {
   const MainPage({Key? key}) : super(key: key);
@@ -10,7 +11,7 @@ class MainPage extends StatelessWidget {
     const DiscoverPage(),
     const SizedBox(),
     const SizedBox(),
-    const SizedBox(),
+    const StorePage(),
     const ProfilePage()
   ];
   @override
