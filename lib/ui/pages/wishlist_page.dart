@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
-class StorePage extends StatelessWidget {
-  const StorePage({Key? key}) : super(key: key);
-  Widget _storeItemWidget(BuildContext context) {
+class WishlistPage extends StatelessWidget {
+  const WishlistPage({Key? key}) : super(key: key);
+  Widget _favoriteItemWidget(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(left: 15),
       child: Row(
@@ -64,10 +64,10 @@ class StorePage extends StatelessWidget {
                   SizedBox(width: 10),
                   TextButton(
                     onPressed: () {},
-                    child: Text('Add to wishlist'),
+                    child: Text('Remove from wishlist'),
                     style: TextButton.styleFrom(
                       backgroundColor: Colors.white,
-                      elevation: 10,
+                      elevation: 5,
                     ),
                   ),
                 ],
@@ -115,10 +115,9 @@ class StorePage extends StatelessWidget {
             ),
             ListView.separated(
                 shrinkWrap: true,
-                itemBuilder: (context, index) => _storeItemWidget(context),
+                itemBuilder: (context, index) => _favoriteItemWidget(context),
                 separatorBuilder: (context, index) => SizedBox(height: 15),
                 itemCount: 4)
-            // _storeItemWidget(context),
           ],
         ),
       ),

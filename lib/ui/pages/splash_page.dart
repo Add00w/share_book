@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:share_book/src/ui/pages/onboarding_page.dart';
 
-import 'main_page.dart';
+import 'onboarding_page.dart';
 
 class SplashPage extends StatefulWidget {
   const SplashPage({Key? key}) : super(key: key);

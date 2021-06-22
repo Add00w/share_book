@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:introduction_screen/introduction_screen.dart';
-import 'package:share_book/src/ui/pages/main_page.dart';
+import 'package:share_book/ui/pages/welcome_page.dart';
 
 class OnBoardingPage extends StatefulWidget {
   @override
@@ -12,7 +12,7 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
 
   void _onIntroEnd(context) {
     Navigator.of(context).push(
-      MaterialPageRoute(builder: (_) => MainPage()),
+      MaterialPageRoute(builder: (_) => WelcomePage()),
     );
   }
 

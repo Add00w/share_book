@@ -1,17 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
 import 'package:share_book/blocs/navigator/navigator_cubit.dart';
-import 'package:share_book/src/ui/pages/discover_page.dart';
-import 'package:share_book/src/ui/pages/library_page.dart';
-import 'package:share_book/src/ui/pages/profile_page.dart';
-import 'package:share_book/src/ui/pages/store_page.dart';
+
+import 'discover_page.dart';
+import 'library_page.dart';
+import 'profile_page.dart';
+import 'store_page.dart';
+import 'wishlist_page.dart';
 
 class MainPage extends StatelessWidget {
   const MainPage({Key? key}) : super(key: key);
   static const _pages = <Widget>[
     const DiscoverPage(),
     const LibraryPage(),
-    const SizedBox(),
+    const WishlistPage(),
     const StorePage(),
     const ProfilePage()
   ];

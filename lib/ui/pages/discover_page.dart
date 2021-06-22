@@ -1,7 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:share_book/src/ui/widgets/clippers.dart';
-import 'package:share_book/src/ui/widgets/share_book_slider.dart';
+import 'package:share_book/ui/widgets/clippers.dart';
+import 'package:share_book/ui/widgets/share_book_slider.dart';
 
 class DiscoverPage extends StatelessWidget {
   const DiscoverPage({Key? key}) : super(key: key);
