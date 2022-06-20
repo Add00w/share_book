@@ -10,31 +10,24 @@ part 'topics_state.dart';
 class TopicsCubit extends Cubit<TopicsState> {
   TopicsCubit(this._topicsRepo) : super(TopicsInitial());
   final TopicsRepository _topicsRepo;
-  List<Topic> _topics = [];
   void getTopics() {
     emit(TopicsLoading());
-    _topics = _topicsRepo.getTopics();
+    final _topics = _topicsRepo.getTopics();
     emit(TopicsLoaded(topics: _topics));
     _log(_topics);
   }
 
   void selectTopic(String? topicId) async {
-    log('Topic Id $topicId');
-    // final list1 = <Topic>[];
-    // for (var item in _topics) {
-    //   if (item.id == topicId) {
-    //     item.selected = !item.selected;
-    //   }
-    //   list1.add(item);
-    // }
-    // emit((state as TopicsLoaded).copyWith(topics: list1));
-
-    final list = List<Topic>.from(_topics);
+    final list = List<Topic>.from((state as TopicsLoaded).topics);
     final index = list.indexWhere((element) => element.id == topicId);
     final updatedTopic = list[index];
-    updatedTopic.selected = !updatedTopic.selected;
-    list.removeAt(index);
-    list.add(updatedTopic);
+    final newTopic = Topic(
+      id: updatedTopic.id,
+      title: updatedTopic.title,
+      image: updatedTopic.image,
+      selected: !updatedTopic.selected,
+    );
+    list[index] = newTopic;
     emit((state as TopicsLoaded).copyWith(topics: list));
   }
 
