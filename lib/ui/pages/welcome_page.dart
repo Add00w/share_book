@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -14,9 +12,8 @@ class WelcomePage extends StatelessWidget {
       onTap: () {
         context.read<TopicsCubit>().selectTopic(topic.id);
       },
-      child: Container(
+      child: SizedBox(
         width: 100,
-        height: 100,
         child: Column(
           children: [
             Stack(
@@ -35,16 +32,18 @@ class WelcomePage extends StatelessWidget {
                   ),
               ],
             ),
-            Text(
-              topic.title,
-              softWrap: true,
-              overflow: TextOverflow.ellipsis,
-              style: topic.selected
-                  ? Theme.of(context)
-                      .textTheme
-                      .bodyText2!
-                      .copyWith(color: Theme.of(context).primaryColor)
-                  : Theme.of(context).textTheme.bodyText2,
+            SizedBox(
+              width: 100,
+              child: Text(
+                topic.title,
+                overflow: TextOverflow.ellipsis,
+                style: topic.selected
+                    ? Theme.of(context)
+                        .textTheme
+                        .bodyText2!
+                        .copyWith(color: Theme.of(context).primaryColor)
+                    : Theme.of(context).textTheme.bodyText2,
+              ),
             )
           ],
         ),
@@ -59,13 +58,12 @@ class WelcomePage extends StatelessWidget {
         bloc: context.read<TopicsCubit>()..getTopics(),
         builder: (context, state) {
           return Column(
-            mainAxisSize: MainAxisSize.min,
             children: [
               ClipPath(
                 clipper: _WelcomeClipper(),
                 child: Container(
                   color: Theme.of(context).primaryColor,
-                  height: MediaQuery.of(context).size.height / 6,
+                  height: MediaQuery.of(context).size.height / 4.4,
                   child: Stack(
                     children: [
                       ClipPath(
@@ -73,7 +71,8 @@ class WelcomePage extends StatelessWidget {
                         child: Container(
                           margin: EdgeInsets.zero,
                           padding: EdgeInsets.zero,
-                          color: Theme.of(context).accentColor,
+                          color: Theme.of(context).colorScheme.secondary,
+                          height: MediaQuery.of(context).size.height / 4.8,
                           width: double.infinity,
                         ),
                       ),
@@ -108,19 +107,16 @@ class WelcomePage extends StatelessWidget {
                 Center(child: CircularProgressIndicator())
               } else if (state is TopicsLoaded) ...{
                 Flexible(
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 10),
-                    child: GridView.count(
-                      crossAxisCount: 3,
-                      crossAxisSpacing: 5,
-                      padding: EdgeInsets.zero,
-                      shrinkWrap: true,
-                      children: [
-                        for (var topic in state.topics) ...{
-                          _topicWidget(topic, context),
-                        },
-                      ],
-                    ),
+                  child: GridView.count(
+                    crossAxisCount: 3,
+                    crossAxisSpacing: 5,
+                    padding: EdgeInsets.zero,
+                    shrinkWrap: true,
+                    children: [
+                      for (var topic in state.topics) ...{
+                        _topicWidget(topic, context),
+                      },
+                    ],
                   ),
                 ),
               },

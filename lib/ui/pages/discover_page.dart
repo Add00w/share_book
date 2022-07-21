@@ -103,21 +103,21 @@ class DiscoverPage extends StatelessWidget {
                   clipper: DiscoverTopClipper(),
                   child: Container(
                     color: Theme.of(context).primaryColor,
-                    height: _height * 0.67,
+                    height: _height * 0.8,
                     width: double.infinity,
                   ),
                 ),
                 ClipPath(
                   clipper: DiscoverTopClipper2(),
                   child: Container(
-                    color: Theme.of(context).accentColor,
-                    height: _height * 0.66,
+                    color: Theme.of(context).colorScheme.secondary,
+                    height: _height * 0.78,
                     width: double.infinity,
                   ),
                 ),
                 Padding(
                   padding:
-                      const EdgeInsets.symmetric(horizontal: 15, vertical: 60),
+                      const EdgeInsets.symmetric(horizontal: 15, vertical: 34),
                   child: Material(
                     elevation: 1,
                     borderRadius: BorderRadius.circular(30),
@@ -141,7 +141,7 @@ class DiscoverPage extends StatelessWidget {
                   ),
                 ),
                 Positioned(
-                  top: _height * 0.19,
+                  top: _height * 0.15,
                   left: 15,
                   child: Padding(
                     padding: const EdgeInsets.only(left: 15),
@@ -153,11 +153,11 @@ class DiscoverPage extends StatelessWidget {
                 ),
                 Positioned(
                   width: 400,
+                  top: _height * 0.19,
                   child: ShareBookSlider(),
-                  top: 200,
                 ),
                 Positioned(
-                  top: _height / 1.8,
+                  top: _height / 1.55,
                   width: MediaQuery.of(context).size.width,
                   height: 200,
                   child: ListView.separated(

@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:share_book/blocs/library/library_cubit.dart';
@@ -57,30 +56,25 @@ class LibraryPage extends StatelessWidget {
               onTap: (value) => print(''),
             ),
           ),
-          body: SizedBox(
-            width: double.infinity,
-            height: MediaQuery.of(context).size.height,
-            child: Column(
-              children: [
-                Flexible(
-                  child: BlocBuilder<LibraryCubit, LibraryState>(
-                    builder: (context, state) {
-                      if (state is LibraryBooksLoaded) {
-                        return TabBarView(
-                          children: [
-                            _booksGridView(context, state.generalLibraryBooks),
-                            _booksGridView(context, state.newLibraryBooks),
-                            _booksGridView(
-                                context, state.mostViewedLibraryBooks),
-                          ],
-                        );
-                      }
-                      return Center(child: CircularProgressIndicator());
-                    },
-                  ),
+          body: Column(
+            children: [
+              Flexible(
+                child: BlocBuilder<LibraryCubit, LibraryState>(
+                  builder: (context, state) {
+                    if (state is LibraryBooksLoaded) {
+                      return TabBarView(
+                        children: [
+                          _booksGridView(context, state.generalLibraryBooks),
+                          _booksGridView(context, state.newLibraryBooks),
+                          _booksGridView(context, state.mostViewedLibraryBooks),
+                        ],
+                      );
+                    }
+                    return Center(child: CircularProgressIndicator());
+                  },
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
         ),
       ),
