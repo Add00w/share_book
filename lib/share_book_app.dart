@@ -21,11 +21,18 @@ class SharedBookApp extends StatelessWidget {
         child: MaterialApp(
           debugShowCheckedModeBanner: false,
           theme: Theme.of(context).copyWith(
-              primaryColor: Colors.pink.shade300,
-              accentColor: Colors.pink.shade200,
-              textTheme: Theme.of(context).textTheme.copyWith(
+            primaryColor: Colors.pink.shade300,
+            // accentColor: Colors.pink.shade200,
+            colorScheme: Theme.of(context).colorScheme.copyWith(
+                  secondary: Colors.pink.shade200,
+                ),
+            textTheme: Theme.of(context).textTheme.copyWith(
                   headline6: TextStyle(
-                      color: Colors.white, fontWeight: FontWeight.bold))),
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+          ),
           title: 'Share Book',
           home: SplashPage(),
         ),
