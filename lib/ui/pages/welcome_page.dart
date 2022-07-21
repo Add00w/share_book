@@ -5,6 +5,8 @@ import 'package:share_book/blocs/topics/topics_cubit.dart';
 import 'package:share_book/models/topics.dart';
 import 'package:share_book/ui/pages/main_page.dart';
 
+import '../widgets/clippers.dart';
+
 class WelcomePage extends StatelessWidget {
   const WelcomePage({Key? key}) : super(key: key);
   Widget _topicWidget(Topic topic, BuildContext context) {
@@ -60,14 +62,14 @@ class WelcomePage extends StatelessWidget {
           return Column(
             children: [
               ClipPath(
-                clipper: _WelcomeClipper(),
+                clipper: WelcomeClipper(),
                 child: Container(
                   color: Theme.of(context).primaryColor,
                   height: MediaQuery.of(context).size.height / 4.4,
                   child: Stack(
                     children: [
                       ClipPath(
-                        clipper: _WelcomeClipper2(),
+                        clipper: WelcomeClipper2(),
                         child: Container(
                           margin: EdgeInsets.zero,
                           padding: EdgeInsets.zero,
@@ -165,98 +167,3 @@ class WelcomePage extends StatelessWidget {
     );
   }
 }
-
-class _WelcomeClipper2 extends CustomClipper<Path> {
-  @override
-  Path getClip(Size size) {
-    var controlPoint1 = Offset(size.width / 4, size.height);
-    var controlPoint2 = Offset(size.width / 1.5, size.height / 1.5);
-    var endPoint = Offset(size.width, size.height / 1.07);
-    print('size:${size.height} -${size.width}');
-    final path = Path();
-    path
-      ..lineTo(0, size.height / 1.1)
-      ..cubicTo(controlPoint1.dx, controlPoint1.dy, controlPoint2.dx,
-          controlPoint2.dy, endPoint.dx, endPoint.dy)
-      ..lineTo(size.width, 0)
-      ..close();
-    return path;
-  }
-
-  @override
-  bool shouldReclip(covariant CustomClipper<Path> oldClipper) => false;
-}
-
-class _WelcomeClipper extends CustomClipper<Path> {
-  @override
-  Path getClip(Size size) {
-    var controlPoint1 = Offset(size.width / 1.2, size.height / 1.3);
-    var controlPoint2 = Offset(size.width / 2, size.height);
-    var endPoint = Offset(size.width, size.height / 1.05);
-    print('size:${size.height} -${size.width}');
-    final path = Path();
-    path
-      ..lineTo(0, size.height)
-      ..cubicTo(controlPoint1.dx, controlPoint1.dy, controlPoint2.dx,
-          controlPoint2.dy, endPoint.dx, endPoint.dy)
-      ..lineTo(size.width, 0)
-      ..close();
-    return path;
-  }
-
-  @override
-  bool shouldReclip(covariant CustomClipper<Path> oldClipper) => false;
-}
-
-
-
-
-
-// class _WelcomeClipper extends CustomClipper<Path> {
-//   @override
-//   Path getClip(Size size) {
-//     final path = Path();
-//     path.lineTo(0, size.height / 4);
-//     path.cubicTo(
-//       size.width / 3,
-//       3 * size.height / 8,
-//       3 * size.width / 5,
-//       size.height / 4,
-//       size.width,
-//       size.height / 3,
-//     );
-
-//     path.lineTo(size.width, 0);
-
-//     // path.close();
-//     return path;
-//   }
-
-//   @override
-//   bool shouldReclip(covariant CustomClipper<Path> oldClipper) => false;
-// }
-
-// class _WelcomeClipper2 extends CustomClipper<Path> {
-//   @override
-//   Path getClip(Size size) {
-//     print('size:${size.height} -${size.width}');
-//     final path = Path();
-//     path.lineTo(0, size.height / 3.3);
-//     path.cubicTo(
-//       size.width / 3,
-//       3 * size.height / 10,
-//       3 * size.width / 5,
-//       size.height / 2.7,
-//       size.width,
-//       size.height / 2.9,
-//     );
-
-//     path.lineTo(size.width, 0);
-
-//     path.close();
-//     return path;
-//   }
-
-//   @override
-//   bool shouldReclip(covariant CustomClipper<Path> oldClipper) => false;
-// }
